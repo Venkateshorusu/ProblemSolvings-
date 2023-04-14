@@ -1,0 +1,91 @@
+Problem Description
+Given an integer A, generate a square matrix filled with elements from 1 to A*A in spiral order. The spiral order will be clockwise in nature starting from (0,0)
+
+Input format
+One line of input, containing a single integer A.
+
+Output format
+Print a 2-d matrix of size A x A satisfying the spiral order.
+
+Sample Input 1
+3
+
+Sample Output 1
+1 2 3
+
+8 9 4
+
+7 6 5
+
+Explanation
+As you can see the matrix goes spirally with each next position incremented by one.
+
+Constraints
+1<=A<=1000
+
+Resources
+Print a given matrix in spiral form
+
+Two-dimensional matrix implementation for c++
+
+Two-dimensional matrix implementation for java
+
+Two-dimensional matrix implementation for python
+
+Two-dimensional matrix implementation for javascript
+
+https://www.geeksforgeeks.org/circular-matrix-construct-a-matrix-with-numbers-1-to-mn-in-spiral-way/
+
+//code<------------------------------------->
+
+import java.util.*;
+
+class SpiralMatrixII {
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int result[][] = spiralMatrixII(n);
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+                System.out.print(result[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+
+    static int[][] spiralMatrixII(int n) {
+        int ans[][]=new int[n][n];
+        int  count=1;
+        int top=0;
+        int left=n-1;
+        int bottom=n-1;
+        int right=0;
+        while(count<=n*n){
+            for(int i=right;i<=left;i++){
+                ans[top][i]=count++;
+                
+            }
+            top++;
+            for(int i=top;i<=bottom;i++){
+                ans[i][left]=count++;
+                
+            }
+            left--;
+            for(int i=left;i>=right;i--){
+                ans[bottom][i]=count++;
+                
+            }
+            bottom--;
+            for(int i=bottom;i>=top;i--){
+                ans[i][right]=count++;
+                
+            }
+            right++;
+        }
+        
+        return ans;
+        
+    }
+}
+
